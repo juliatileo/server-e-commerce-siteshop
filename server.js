@@ -11,4 +11,4 @@ app.use((error, request, response, next) => {
     response.status(error.status || 500)
     response.json({ error: error.message })
 })
-app.listen(3001, () => console.log('Rodando'))
+app.listen(process.env.PORT || 3001, () => console.log('Rodando'))
