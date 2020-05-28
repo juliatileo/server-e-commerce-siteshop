@@ -53,10 +53,10 @@ module.exports = {
         }
     },
     async login(req, res, next) {
-        const { email } = req.body
+        const { email, senha } = req.body
 
         try {
-            const user = await knex('users').where('email', email)
+            const user = await knex('users').where('email', email).andWhere('senha', senha)
             if (user.length != 0)
                 return res.status(200).json(user)
             return res.status(400).json({ Erro: 'Usuário não existe' })
