@@ -62,8 +62,7 @@ module.exports = {
         } catch (err) {
             next(err)
         }
-    }
-
+    },
     async ganharCreditos(req, res, next) {
         try {
             const { creditos } = req.body
