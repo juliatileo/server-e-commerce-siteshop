@@ -15,6 +15,7 @@ routes.get('/users/:id', UserController.getUser)
 routes.get('/login', UserController.login)
 routes.post('/users', multer(multerConfig).single('profpic'), UserController.createUser)
 routes.put('/users/:id', multer(multerConfig).single('profpic'), UserController.updateUser)
+routes.put('creditos/:id', UserController.ganharCreditos)
 
 // Produtos
 

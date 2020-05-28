@@ -63,5 +63,15 @@ module.exports = {
         } catch (err) {
             next(err)
         }
+    },
+    async ganharCreditos(req, res, next) {
+        try {
+            const { creditos } = req.body
+            const { id } = req.params
+            const user = await knex('users').update({ creditos }).where({ id })
+            return res.status(200).json({ sucesso: `Adicionado ${creditos} creditos` })
+        } catch (err) {
+            next(err)
+        }
     }
 }
