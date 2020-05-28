@@ -38,7 +38,7 @@ module.exports = {
     },
     async updateUser(req, res, next) {
         const { nome, email, senha } = req.body
-        const profpic = `${req.file.filename}`
+        const profpic = `${url}/${req.file.filename}`
         const { id } = req.params
 
         try {
