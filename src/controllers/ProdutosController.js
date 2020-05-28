@@ -22,7 +22,7 @@ module.exports = {
     async createProduto(req, res, next) {
         try {
             const { nome, preco, maxparcelas } = req.body
-            const imagem = `${req.file.filename}`
+            const imagem = `${url}/${req.file.filename}`
             const user_id = req.params.id
 
             const produto = await knex('produtos').insert({ nome, preco, imagem, user_id, maxparcelas })

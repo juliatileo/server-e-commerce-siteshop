@@ -25,7 +25,7 @@ module.exports = {
         const creditos = 1000
         const compras = 0
         const vendas = 0
-        const profpic = `${req.file.filename}`
+        const profpic = `${url}/${req.file.filename}`
         try {
             const validation = await knex('users').where({ email })
             if (validation.length != 0)

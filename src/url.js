@@ -1,3 +1,3 @@
-const url = 'http://localhost:3001'
+const url = 'https://e-commerce-siteshop.herokuapp.com/'
 
 module.exports = url
