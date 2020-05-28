@@ -53,17 +53,17 @@ module.exports = {
         }
     },
     async login(req, res, next) {
-        const { email, senha } = req.body
-
         try {
-            const user = await knex('users').where('email', email).andWhere('senha', senha)
-            if (user.length != 0)
-                return res.status(200).json(user)
-            return res.status(400).json({ Erro: 'Usuário não existe' })
+            const { email, senha } = req.body
+            const user = await knex('users').where({ email }).andWhere({ senha })
+            if (user.length == 0)
+                return res.status(400).json({ Erro: 'Usuário já existe' })
+            return res.status(200).json(user)
         } catch (err) {
             next(err)
         }
-    },
+    }
+
     async ganharCreditos(req, res, next) {
         try {
             const { creditos } = req.body
