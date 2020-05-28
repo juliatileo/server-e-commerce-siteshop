@@ -1,3 +1,3 @@
-const url = 'https://e-commerce-siteshop.herokuapp.com/'
+const url = 'https://e-commerce-siteshop.herokuapp.com'
 
 module.exports = url
