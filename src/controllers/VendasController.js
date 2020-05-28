@@ -4,7 +4,7 @@ module.exports = {
     async getVendas(req, res, next) {
         try {
             const { id } = req.params
-            const venda = await knex('vendas').join('users as comprador', 'comprador.id', '=', 'vendas.comprador_id').join('users as vendedor', 'vendedor.id', '=', 'vendas.vendedor_id').select('vendas.*', 'comprador.nome as comprador_nome', 'vendedor.nome as vendedor_nome').where('comprador_id', id).orWhere('vendedor_id', id).orderBy('created_at', 'desc')
+            const venda = await knex('vendas').join('users as comprador', 'comprador.id', '=', 'vendas.comprador_id').join('users as vendedor', 'vendedor.id', '=', 'vendas.vendedor_id').select('vendas.*', 'comprador.nome as comprador_nome', 'comprador.profpic as comprador_imagem', 'vendedor.nome as vendedor_nome', 'vendedor.profpic as vendedor_imagem').where('comprador_id', id).orWhere('vendedor_id', id).orderBy('created_at', 'desc')
             return res.status(200).json(venda)
         } catch (err) {
             next(err)

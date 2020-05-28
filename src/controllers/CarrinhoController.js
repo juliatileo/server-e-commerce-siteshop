@@ -4,7 +4,7 @@ module.exports = {
     async getCarrinho(req, res, next) {
         try {
             const { id } = req.params
-            const carrinho = await knex('carrinhos').where('user_id', id).orderBy('created_at', 'desc')
+            const carrinho = await knex('carrinhos').join('produtos as produto', 'produto.id', '=', 'carrinhos.produto_id').join('users', 'users.id', '=', 'carrinhos.user_id').select('carrinhos.*', 'produto.nome as produto_nome', 'produto.preco as produto_preco', 'produto.imagem as produto_imagem').where('users.id', id).orderBy('created_at', 'desc')
             return res.status(200).json(carrinho)
         } catch (err) {
             next(err)
